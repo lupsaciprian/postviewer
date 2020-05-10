@@ -5,7 +5,7 @@ export const state = {
   postsLoading: false,
   commentsLoading: false,
   selectedPost: null,
-  page: 9,
+  page: 1,
   perPage: 5,
   total: 5,
   editMode: false,
