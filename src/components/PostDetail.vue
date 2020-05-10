@@ -10,6 +10,7 @@
       <b-button
         @click="loadComments"
         variant="primary"
+        :disabled="commentsLoading"
         class="mr-2 d-flex justify-content-center align-items-center"
       >
         <b-spinner

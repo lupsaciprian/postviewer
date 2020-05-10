@@ -7,7 +7,9 @@
     class="flex-column align-items-start"
   >
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ post.title }}</h5>
+      <h5 class="mb-1" :class="{ 'text-danger': post.deleted }">
+        {{ post.title }}
+      </h5>
       <small>3 days ago</small>
     </div>
 
