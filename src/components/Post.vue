@@ -1,7 +1,7 @@
 <template>
   <b-list-group-item
     href="#"
-    @click.prevent="selectPost(post)"
+    @click.prevent="selectPost()"
     :active="isSelected"
     :disabled="post.deleted"
     class="flex-column align-items-start"
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { state } from '@/state/state';
+import { selectPost } from "@/store/actions";
 
 export default {
   props: {
@@ -32,13 +32,13 @@ export default {
     },
   },
   computed: {
-    isSelected: (v) => {
-      return v.$root.selectedPost && v.$root.selectedPost.id === v.post.id;
-    },
+    isSelected: (vueinst) =>
+      vueinst.$root.selectedPost &&
+      vueinst.$root.selectedPost.id === vueinst.post.id,
   },
   methods: {
-    selectPost(post) {
-      state.setSelectedPost(post);
+    selectPost() {
+      selectPost(this.post);
     },
   },
 };

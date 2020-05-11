@@ -23,11 +23,9 @@
 
 <script>
 export default {
-  props: {
-    comments: {
-      type: Array,
-      default: [],
-    },
+  // To make this component more reusable, you can give it props instead of getting a specific store piece
+  computed: {
+    comments: ({ $root }) => $root.selectedPost.comments,
   },
 };
 </script>

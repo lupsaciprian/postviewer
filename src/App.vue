@@ -3,7 +3,7 @@
     <b-container>
       <h1 class="my-4">Post Viewer</h1>
 
-      <b-container class="bv-example-row">
+      <b-container>
         <b-row>
           <b-col>
             <PostList />
@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import PostList from '@/components/PostList.vue';
-import PostDetail from '@/components/PostDetail.vue';
+import PostList from "@/components/PostList.vue";
+import PostDetail from "@/components/PostDetail.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     PostList,
     PostDetail,

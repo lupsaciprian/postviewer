@@ -2,6 +2,7 @@
   <div v-if="!selectedPost">
     <h3>Select a post.</h3>
   </div>
+
   <div v-else>
     <h4 class="mb-2">{{ selectedPost.title }}</h4>
     <p>{{ selectedPost.body }}</p>
@@ -38,21 +39,18 @@
       </b-popover>
     </div>
 
-    <UpdateForm class="my-4" v-if="editMode" />
-    <Comments
-      v-if="!editMode && selectedPost.comments"
-      :comments="selectedPost.comments"
-      class="my-4"
-    />
+    <UpdateForm v-if="editMode" class="my-4" />
+    <Comments v-if="!editMode && selectedPost.comments" class="my-4" />
   </div>
 </template>
 
 <script>
-import { state } from '@/state/state';
-import Comments from '@/components/Comments.vue';
+import Comments from "@/components/Comments.vue";
+
+import { toggle, deletePost, fetchComments } from "@/store/actions";
 
 export default {
-  components: { UpdateForm: () => import('@/components/Form'), Comments },
+  components: { UpdateForm: () => import("@/components/Form"), Comments },
   computed: {
     selectedPost: ({ $root }) => $root.selectedPost,
     editMode: ({ $root }) => $root.editMode,
@@ -60,13 +58,13 @@ export default {
   },
   methods: {
     update() {
-      state.toggle('editMode');
+      toggle("editMode");
     },
     deletePost() {
-      state.deletePost();
+      deletePost();
     },
     loadComments() {
-      state.loadComments();
+      fetchComments();
     },
   },
 };

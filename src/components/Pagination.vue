@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { state } from '@/state/state';
+import { setPage } from "@/store/actions";
 
 export default {
   data() {
@@ -20,8 +20,8 @@ export default {
   computed: {
     page: {
       get: ({ $root }) => $root.page,
-      set: ($event) => {
-        state.setPage($event);
+      set: (newValue) => {
+        setPage(newValue);
       },
     },
     perPage: ({ $root }) => $root.perPage,

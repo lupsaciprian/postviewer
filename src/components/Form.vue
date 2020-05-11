@@ -25,17 +25,17 @@
 </template>
 
 <script>
-import { state } from '@/state/state';
+import { setSelectedPostValue } from "@/store/actions";
 
 export default {
   computed: {
     title: {
       get: ({ $root }) => $root.selectedPost.title,
-      set: ($event) => state.setSelectedValue('title', $event),
+      set: ($event) => state.setSelectedPostValue("title", $event),
     },
     body: {
       get: ({ $root }) => $root.selectedPost.body,
-      set: ($event) => state.setSelectedValue('body', $event),
+      set: ($event) => state.setSelectedPostValue("body", $event),
     },
   },
 };

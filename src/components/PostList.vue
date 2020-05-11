@@ -3,11 +3,11 @@
     class="d-flex justify-content-center align-items-center"
     style="min-height: 500px;"
   >
-    <b-spinner v-if="loading" type="grow" label="Spinning"></b-spinner>
+    <b-spinner v-if="postsLoading" type="grow" label="Spinning"></b-spinner>
 
     <div v-else>
       <b-list-group>
-        <Post v-for="(post, index) in posts" :post="post" :key="post.id" />
+        <Post v-for="post in posts" :post="post" :key="post.id" />
       </b-list-group>
       <Pagination />
     </div>
@@ -15,19 +15,19 @@
 </template>
 
 <script>
-import { state } from '@/state/state';
+import Post from "@/components/Post.vue";
+import Pagination from "@/components/Pagination.vue";
 
-import Post from '@/components/Post.vue';
-import Pagination from '@/components/Pagination.vue';
+import { fetchPosts } from "@/store/actions";
 
 export default {
   components: { Post, Pagination },
   computed: {
     posts: ({ $root }) => $root.posts,
-    loading: ({ $root }) => $root.postsLoading,
+    postsLoading: ({ $root }) => $root.postsLoading,
   },
   mounted() {
-    state.getPosts();
+    fetchPosts();
   },
 };
 </script>
